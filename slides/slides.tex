@@ -1,0 +1,108 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Singapore}
+
+% add page numbers at the bottom of the slides
+\setbeamertemplate{caption}[numbered]
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \raisebox{1.4pt}[0pt][0pt]{\insertframenumber/\inserttotalframenumber}
+}
+
+% \definecolor{primarycolor}{HTML}{0000FF}
+
+% \makeatletter
+
+% \def\sectioncolor{primarycolor}% color to be applied to section headers
+
+% \setbeamercolor{palette primary}{use=structure,fg=structure.fg}
+% \setbeamercolor{palette secondary}{use=structure,fg=structure.fg!75!black}
+% \setbeamercolor{palette tertiary}{use=structure,fg=structure.fg!50!black}
+% \setbeamercolor{palette quaternary}{fg=black}
+
+% \setbeamercolor{local structure}{fg=primarycolor}
+% \setbeamercolor{structure}{fg=primarycolor}
+% \setbeamercolor{title}{fg=primarycolor}
+% \setbeamercolor{section in head/foot}{fg=black}
+
+% \setbeamercolor{normal text}{fg=black,bg=white}
+% \setbeamercolor{block title alerted}{fg=red}
+% \setbeamercolor{block title example}{fg=primarycolor}
+
+% \setbeamercolor{footline}{fg=primarycolor!50}
+% \setbeamerfont{footline}{series=\bfseries}
+
+% use classic LaTeX font for maths
+\usefonttheme[onlymath]{serif}
+
+\usepackage{cmap}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[kerning=true]{microtype}
+\usepackage{lmodern}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{positioning}
+
+\usepackage[
+    backend=biber,
+    style=numeric,
+]{biblatex}
+\usepackage{graphicx}
+\usepackage[justification=centering]{caption}
+\usepackage{csquotes}
+
+\graphicspath{{./images/}}
+
+\addbibresource{../report/report.bib}
+\renewcommand*{\bibfont}{\footnotesize}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Plan}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+
+\theoremstyle{definition}
+\newtheorem*{exemple}{Example}
+
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+
+\title{\textbf{Adversarial Attacks on Images}}
+
+\author{Pierre-Gabriel Berlureau\and Antoine Groudiev\and Matéo Torrents}
+
+\titlegraphic{\includegraphics[height=1.6cm]{./images/logo-ens-psl.png}}
+
+\date{\today}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Plan}
+   \tableofcontents
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]
+    \nocite{*}
+    \printbibliography
+\end{frame}
+
+\end{document}
