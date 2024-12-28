@@ -4,9 +4,11 @@
 \author{Pierre-Gabriel Berlureau\and Antoine Groudiev\and Matéo Torrents}
 \date{}
 
-\usepackage{lipsum}
+% this is already declared in cs-classes.cls but I have no idea why it doesn't work
+\DeclareMathOperator*{\sign}{sign}
 
 \addbibresource{report.bib}
+% TODO: add more citations in the text
 
 \begin{document}
 \maketitle
@@ -41,6 +43,8 @@ It has been shown that lack of robustness of widely-used vision systems can be u
 
 As computer vision is a cornerstone of autonomous vehicles, modified street signs could cause major damage such vehicles by taking control over their perception space. On a closer timespan, slightly modified license plates could allow an attacker to become invisible to automatic parking controls, without adding any meaningful pattern to the human eye.
 
+% TODO: illustration
+
 \section{Attacks algorithms}
 \label{sec:attacks-algorithms}
 We now introduce a few selected algorithms to build adversarial images. Such methods have the upsides of being both easy to understand and implement, and extremely effective on unprotected systems.
@@ -71,6 +75,7 @@ Such a method is usually stronger than FGSM as it results in smaller and more pr
 
 \subsection{Facial accessories}
 As opposed to digital attacks --such as FGSM -- which require the attacker to have direct digital access to the image fed into the model, physical attacks aim at fooling the model without such control over the input. For instance, dodging attacks (causing the model to misclassify a face as any other face) and impersonation attacks (causing the model to misclassify a face as a specific target) can be performed on facial recognition systems by wearing maliciously crafted accessories such as eye-glasses. While randomly colored eye-glasses can already effectively perform a dodging attacks, color patterns can be fine-tuned to perform impersonation attacks. It has been shown that such attacks can be performed with a high success rate, even in a black-box setup, using particle swarm optimization algorithms \cite{sharif2016accessorize}.
+% TODO: add implementation
 
 \section{Defence mechanisms}
 As the threat of adversarial images for computer vision systems increases, recent literature introduced diverse practical defence mechanisms. Nevertheless, it is worth knowing that defence remains an extremely challenging task; the lack of mathematical tools to model adversarial attacks makes it hard to argue that a certain mechanism will be efficient against a class of attacks.
@@ -81,6 +86,7 @@ A simple and standard defence strategy is to increase the robustness of the visi
     \tilde{J}_\theta(x, y) = \alpha J_\theta(x, y) \\+ (1-\alpha)J_\theta\left(x+\epsilon\sign\left(\nabla_x J_\theta(x, y)\right)\right)
 \end{multline*}
 This would force the model to predict the same class for both the original and the modified image -- in this case crafted using FGSM.
+% TODO: add implementation
 
 
 \subsection{\texorpdfstring{\texttt{NULL}}{NULL} labeling}
