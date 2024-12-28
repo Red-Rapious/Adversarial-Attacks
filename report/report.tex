@@ -1,4 +1,4 @@
-\documentclass[twocolumn]{../cs-classes/cs-classes}
+\documentclass[twocolumn]{../../cs-classes/cs-classes}
 
 \title{Adversarial Attacks on Computer Vision Systems}
 \author{Pierre-Gabriel Berlureau\and Antoine Groudiev\and Matéo Torrents}
@@ -69,9 +69,8 @@ Another variant of FGSM is its iteration over multiple steps of gradient evaluat
 \end{equation*}
 Such a method is usually stronger than FGSM as it results in smaller and more precise steps instead of one big step in the original gradient direction.
 
-\subsection{TODO: another method}
-\lipsum[1]
-% \subsection{Jacobian-based method}
+\subsection{Facial accessories}
+As opposed to digital attacks --such as FGSM -- which require the attacker to have direct digital access to the image fed into the model, physical attacks aim at fooling the model without such control over the input. For instance, dodging attacks (causing the model to misclassify a face as any other face) and impersonation attacks (causing the model to misclassify a face as a specific target) can be performed on facial recognition systems by wearing maliciously crafted accessories such as eye-glasses. While randomly colored eye-glasses can already effectively perform a dodging attacks, color patterns can be fine-tuned to perform impersonation attacks. It has been shown that such attacks can be performed with a high success rate, even in a black-box setup, using particle swarm optimization algorithms \cite{sharif2016accessorize}.
 
 \section{Defence mechanisms}
 As the threat of adversarial images for computer vision systems increases, recent literature introduced diverse practical defence mechanisms. Nevertheless, it is worth knowing that defence remains an extremely challenging task; the lack of mathematical tools to model adversarial attacks makes it hard to argue that a certain mechanism will be efficient against a class of attacks.
