@@ -49,8 +49,6 @@
 \usepackage{amsthm}
 
 \usepackage{mathtools}
-\usepackage{wrapfig}
-\usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{xcolor}
 \usetikzlibrary{positioning}
@@ -66,7 +64,7 @@
 \graphicspath{{./images/}}
 
 \addbibresource{../report/report.bib}
-\renewcommand*{\bibfont}{\footnotesize}
+% \renewcommand*{\bibfont}{\footnotesize}
 
 \AtBeginSection[]
 {
@@ -99,8 +97,77 @@
    \tableofcontents
 \end{frame}
 
+\section{Adversarial attacks: taxonomy and goals}
+\subsection{Adversarial goals}
+\begin{frame}{Definition}
+  \begin{itemize}
+    \item \textbf{Adversarial image}: an image that has been slightly modified to fool a vision system into making a mistake
+    \item \textbf{Usual method}: adding a small perturbation to the image
+    \begin{equation*}
+      X_{\text{attack}} = X_{\text{original}} + \underbrace{\delta X}_{\text{perturbation}}
+    \end{equation*}
+    with $\delta X$ small
+  \end{itemize}
+\end{frame}
+\begin{frame}{Adversarial goals}
+Goals of the attack:
+\begin{itemize}
+  \item \textbf{Confidence reduction}: reduce the confidence of the model in its prediction
+  \item \textbf{Misclassification}: make the model predict a different class
+  \item \textbf{Source/target misclassification}: make the model predict a specific class
+\end{itemize}
+\end{frame}
+\subsection{Adversarial capabilities}
+\begin{frame}{Training v. testing phase approaches}
+  
+\end{frame}
 
-\begin{frame}[allowframebreaks]
+\begin{frame}{White-box v. black-box approaches}
+  
+\end{frame}
+
+\subsection{Real-world examples}
+\begin{frame}{Real-world examples}
+  
+\end{frame}
+
+\section{Attacks algorithms}
+\subsection{Fast Gradient Sign Method (FGSM)}
+\begin{frame}{Fast Gradient Sign Method (FGSM)}{Classical setup}
+  
+\end{frame}
+
+\begin{frame}{Fast Gradient Sign Method (FGSM)}{Source/target misclassification}
+  
+\end{frame}
+
+\begin{frame}{Fast Gradient Sign Method (FGSM)}{Iterating}
+  
+\end{frame}
+
+\subsection{Facial accessories}
+\begin{frame}{Facial accessories}
+  
+\end{frame}
+
+\section{Defense mechanisms}
+\subsection{Adversarial training}
+\begin{frame}{Adversarial training}
+  
+\end{frame}
+
+\subsection{\texttt{NULL} labeling}
+\begin{frame}{\texttt{NULL} labeling}
+  
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{References}
     \nocite{*}
     \printbibliography
 \end{frame}
