@@ -22,7 +22,7 @@ We will discuss the different goals that adversaries can achieve, the informatio
 %
 % Transferability
 \subsection{Adversarial goals}
-Different types of attacks might have different \emph{goals}, that determine the difficulty of the attack. The easiest type of attack would be \emph{confidence reduction}, in which the adversary tries to reduce the
+Different types of attacks might have different \emph{goals} \cite{chakraborty2021survey}, that determine the difficulty of the attack. The easiest type of attack would be \emph{confidence reduction}, in which the adversary tries to reduce the
 confidence of prediction for a specifically crafted image. The most classical -- and hardest -- goal of an attack is \emph{source/target misclassification}: given an image $X$ of class $c_1$, the adversary tries to create an image $X^*$, visually similar to $X$, but classified by the model as class $c_2\neq c_1$. For instance, an attacker might want to alter a \say{stop} sign image in such a way that the resulting image is classified by an autonomous vehicle system as a \say{priority} sign. This is usually done by adding a small variation $\delta X$ to the original image, such that $X^*=X+\delta X$ is misclassified while maintaining $\delta X$ small to avoid human detection of the attack.
 
 \subsection{Adversarial capabilities}
@@ -48,7 +48,7 @@ It has been shown that lack of robustness of widely-used vision systems can be u
 We now introduce a few selected algorithms to build adversarial images. Such methods have the upsides of being both easy to understand and implement, and extremely effective on unprotected systems.
 
 \subsection{Fast Gradient Sign Method (FGSM)}
-The Fast Gradient Sign Method (FGSM) goal is \emph{confidence reduction}. It calculates the effect of a variation of the input in a single step using the gradient of the cost function of the system, with respect to the input; the objective is therefore to maximize the loss. Such an attacked image is computed as follows:
+The Fast Gradient Sign Method (FGSM) \cite{goodfellow2014explaining} goal is \emph{confidence reduction}. It calculates the effect of a variation of the input in a single step using the gradient of the cost function of the system, with respect to the input; the objective is therefore to maximize the loss. Such an attacked image is computed as follows:
 \begin{equation*}
     X_* = X + \epsilon\sign\left(\nabla_x J(X, y_{\text{true}})\right)
 \end{equation*}
@@ -65,7 +65,7 @@ to maximize the confidence for $y_{\text{target}}$ -- hence the minus sign.
 Although this technique is already very efficient, it can be enhanced by going through multiple steps of gradient evaluation and using a smaller step size. This usually leads to smaller and more precise perturbations -- as one can stop as soon as the input is misclassified.
 
 \subsection{Facial accessories}
-As opposed to digital attacks -- such as FGSM -- which require the attacker to have direct digital access to the image fed into the model, physical attacks aim at fooling the model without such control over the input. For instance, dodging attacks (causing the model to misclassify a face as any other face) and impersonation attacks (causing the model to misclassify a face as a specific target) can be performed on facial recognition systems by wearing maliciously crafted accessories such as eye-glasses. While randomly colored eye-glasses can already effectively perform a dodging attacks, color patterns can be fine-tuned to perform impersonation attacks. It has been shown that such attacks can be performed with a high success rate, even in a black-box setup, using particle swarm optimization algorithms \cite{sharif2016accessorize}.
+As opposed to digital attacks -- such as FGSM -- which require the attacker to have direct digital access to the image fed into the model, physical attacks \cite{kurakin2018adversarial} aim at fooling the model without such control over the input. For instance, dodging attacks (causing the model to misclassify a face as any other face) and impersonation attacks (causing the model to misclassify a face as a specific target) can be performed on facial recognition systems by wearing maliciously crafted accessories such as eye-glasses. While randomly colored eye-glasses can already effectively perform a dodging attacks, color patterns can be fine-tuned to perform impersonation attacks. It has been shown that such attacks can be performed with a high success rate, even in a black-box setup, using particle swarm optimization algorithms \cite{sharif2016accessorize}.
 % TODO: add implementation
 
 \section{Defence mechanisms}
