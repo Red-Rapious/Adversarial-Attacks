@@ -51,6 +51,7 @@
 \usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{xcolor}
+\usepackage{multirow}
 \usetikzlibrary{positioning}
 
 \usepackage[
@@ -64,7 +65,7 @@
 \graphicspath{{../images/}}
 
 \addbibresource{../report/report.bib}
-% \renewcommand*{\bibfont}{\footnotesize}
+\renewcommand*{\bibfont}{\footnotesize}
 
 \AtBeginSection[]
 {
@@ -187,7 +188,11 @@
     X_* = X + \epsilon\sign\left(\nabla_x J(X, y_{\text{true}})\right)
   \end{equation*}
   with $J$ the loss function and $\epsilon$ the amplitude of the changes.
-  If we have white-box access to the model, $\nabla_x J$ is easy to compute.
+  % If we have white-box access to the model, $\nabla_x J$ is easy to compute.
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{panda-fgsm.png}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Fast Gradient Sign Method (FGSM)}{Source/target misclassification}
@@ -203,10 +208,18 @@
   \begin{equation*}
     \begin{cases*}
         X_*^0 \quad= X\\
-        X^{n+1}_* = \Clip\left(X^n_*+\alpha\sign\left(\nabla_x J(X, y_{\text{true}})\right)\right)
+        X^{n+1}_* = \Clip\left(X^n_*-\alpha\sign\left(\nabla_x J(X^n_*, y_{\text{true}})\right)\right)
     \end{cases*}
   \end{equation*}
   Such a method is usually stronger than FGSM as it results in smaller and more precise steps instead of one big step in the original gradient direction.
+\end{frame}
+
+\begin{frame}{Fast Gradient Sign Method (FGSM)}{Results}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{fgsm-tabby.png}
+    \caption{Iteration of FGSM to misclassify an image as \texttt{tabby}\\(model: \texttt{ResNet-18}; iterations: 6; $\alpha=0.001$)}
+  \end{figure}
 \end{frame}
 
 \subsection{Facial accessories}
@@ -214,7 +227,7 @@
   \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{facial-accessories.png}
-    \caption{Facial accessories used to fool facial recognition systems}
+    \caption{Facial accessories used to fool facial recognition systems\\ (source: \cite{sharif2016accessorize})}
   \end{figure}
 \end{frame}
 
@@ -243,6 +256,22 @@
       \item Continue to train the classifier on both the clean and adversarial images
     \end{enumerate}
   \end{itemize}
+\end{frame}
+
+\subsection{Results comparison}
+\begin{frame}{Results comparison}
+  \begin{figure}
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{|c|c|p{3.7cm}||c|c|}
+      \hline
+      Dataset & Model & \centering Defense & Real data acc. & Adversarial data acc.\\
+      \hline\hline
+      \multirow{3}{*}{\texttt{MNIST}} & \multirow{3}{*}{CNN} & None & 99\% & 70\%\\\cline{3-5}
+      && Adversarial training & 99\% & 95\%\\\cline{3-5}
+      && \texttt{NULL} labeling & 99\% & 99\%\\\hline
+    \end{tabular}
+  \end{figure}
 \end{frame}
 
 \section{Conclusion}
