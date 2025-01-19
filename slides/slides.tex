@@ -97,12 +97,6 @@
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{Plan}
-   \tableofcontents
-\end{frame}
-
-\section{Adversarial attacks: taxonomy and goals}
-\subsection{Adversarial goals}
 \begin{frame}{Definition}
   \begin{itemize}
     \item \textbf{Adversarial image}: an image that has been slightly modified to fool a vision system into making a mistake
@@ -116,6 +110,13 @@
     \includegraphics[width=0.8\textwidth]{panda.png}
   \end{figure}
 \end{frame}
+
+\begin{frame}{Plan}
+   \tableofcontents
+\end{frame}
+
+\section{Adversarial attacks: taxonomy and goals}
+\subsection{Adversarial goals}
 \begin{frame}{Adversarial goals}
 \textbf{Goals of the attack}:
 \begin{itemize}
@@ -263,14 +264,17 @@
   \begin{figure}
     \centering
     \renewcommand{\arraystretch}{1.2}
-    \begin{tabular}{|c|c|p{3.7cm}||c|c|}
+    % \resizebox{1\textwidth}{!}{
+    \begin{tabular}{|p{3.7cm}||c|c|c|c|}
       \hline
-      Dataset & Model & \centering Defense & Real data acc. & Adversarial data acc.\\
+      \centering Defense & Real data acc. & Adv. acc. $\epsilon=0.1$ & $\epsilon=0.5$ & $\epsilon=1$\\
       \hline\hline
-      \multirow{3}{*}{\texttt{MNIST}} & \multirow{3}{*}{CNN} & None & 99\% & 70\%\\\cline{3-5}
-      && Adversarial training & 99\% & 95\%\\\cline{3-5}
-      && \texttt{NULL} labeling & 99\% & 99\%\\\hline
+      None & 98.90\% & 96.86\% & 69.06 & 21.07\%\\\hline
+      Adversarial training & 98.99\% & 95.27\% & 86.82\% & 94.28\%\\\hline
+      \texttt{NULL} labeling & 98.97\% & 100\% & 100\% & 100\% \\\hline
     \end{tabular}
+    % }
+  \caption{Experiments done on a CNN trained on the \texttt{MNIST} dataset.}
   \end{figure}
 \end{frame}
 
